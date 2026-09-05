@@ -75,7 +75,8 @@
             <div class="card border-success bg-success text-white shadow-sm h-100">
                 <div class="card-body">
                     <h6 class="card-title"><i class="bi bi-currency-dollar"></i> Valor em Estoque</h6>
-                    <h3 class="mb-0">R$ {{ valor_total_estoque|floatformat:2 }}</h3>
+                    <!-- Aplicando o filtro 2g para formatação monetária correta -->
+                    <h3 class="mb-0">R$ {{ valor_total_estoque|floatformat:"2g" }}</h3>
                 </div>
             </div>
         </div>
@@ -111,7 +112,8 @@
                     <tr>
                         <td class="align-middle fw-bold">{{ produto.sku }}</td>
                         <td class="align-middle">{{ produto.nome }}</td>
-                        <td class="align-middle">R$ {{ produto.preco_venda }}</td>
+                        <!-- Aplicando o filtro 2g no preço do produto na tabela -->
+                        <td class="align-middle">R$ {{ produto.preco_venda|floatformat:"2g" }}</td>
                         <td class="align-middle fw-bold {% if produto.estoque_atual <= produto.estoque_minimo %}text-danger{% else %}text-success{% endif %}">
                             {{ produto.estoque_atual }} {{ produto.unidade_medida }}
                         </td>
